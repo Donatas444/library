@@ -21,7 +21,7 @@ public class ClientService {
         if (client.isPresent()) {
             return client.get();
         } else {
-            throw new RuntimeException("Client not found" + id);
+            throw new NullPointerException("Client not found" + id);
         }
     }
 }

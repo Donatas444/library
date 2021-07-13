@@ -36,28 +36,28 @@ public class BookService {
         String publisherNumber;
         String checkNr;
 
-        double L1 = Math.random() * (10);
-        double L2 = Math.random() * (10);
-        double B1 = Math.random() * (10);
-        double B2 = Math.random() * (10);
-        double B3 = Math.random() * (10);
-        double V1 = Math.random() * (10);
-        double V2 = Math.random() * (10);
+        double l1 = Math.random() * (10);
+        double l2 = Math.random() * (10);
+        double b1 = Math.random() * (10);
+        double b2 = Math.random() * (10);
+        double b3 = Math.random() * (10);
+        double v1 = Math.random() * (10);
+        double v2 = Math.random() * (10);
 
-        if ((int) L1 == 0 && (int) L2 == 0) {
-            L2++;
+        if ((int) l1 == 0 && (int) l2 == 0) {
+            l2++;
         }
-        if ((int) B1 == 0) {
-            B1++;
+        if ((int) b1 == 0) {
+            b1++;
         }
-        if ((int) V1 == 0 && (int) V2 == 0) {
-            V2++;
+        if ((int) v1 == 0 && (int) v2 == 0) {
+            v2++;
         }
-        double C = (hashOp((int) L1) + L2 + hashOp((int) B1) + B2 + hashOp((int) B3) + V1 + hashOp((int) V2)) % 10;
-        countryCode = (int) L1 + "" + (int) L2;
-        titleIdentifier = (int) B1 + "" + (int) B2 + "" + (int) B3;
-        publisherNumber = (int) V1 + "" + (int) V2;
-        checkNr = (int) C + "";
+        double c = (hashOp((int) l1) + l2 + hashOp((int) b1) + b2 + hashOp((int) b3) + v1 + hashOp((int) v2)) % 10;
+        countryCode = (int) l1 + "" + (int) l2;
+        titleIdentifier = (int) b1 + "" + (int) b2 + "" + (int) b3;
+        publisherNumber = (int) v1 + "" + (int) v2;
+        checkNr = (int) c + "";
         return "ISBN " + countryCode + "-" + titleIdentifier + "-" + publisherNumber + "-" + checkNr;
     }
 
@@ -111,7 +111,7 @@ public class BookService {
         if (book.isPresent()) {
             return book.get();
         } else {
-            throw new RuntimeException("Book not found" + id);
+            throw new NoSuchElementException("Book not found" + id);
         }
     }
 
